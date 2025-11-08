@@ -1,0 +1,35 @@
+FEATURES REPORT
+===============
+
+Fundamentals
+------------
+- Classes: model/*.java
+- this() and this.: model/Player.java (constructor chaining)
+- Method overloading: util/FacebookUtils.java -> average(int...), average(double...)
+- Varargs: util/FootballUtils.average(...)
+- LVTI (var): Main.java
+- Encapsulation: model/Player.java, model/Statistics.java (private fields + getters)
+- Interfaces: service/PlayerService.java
+- Inheritance: model/Striker.java, model/Goalkeeper.java extend Player
+- Overriding/polymorphism: displayStats() overridden in subclasses, used via Player refs
+- super() and super.: constructors in subclasses call super(...)
+- Exceptions: exception/PlayerNotFoundException.java (checked); try-catch in Main.java
+- Enums: model/PlayerType.java
+- Arrays & Lists: ArrayList in PlayerManager; arrays via varargs in FootballUtils
+- Core API: StringBuilder in FootballUtils; java.time.LocalDate in Player
+
+Advanced
+--------
+- Call-by-value & defensive copying: PlayerManager.getPlayerCopy()
+- Interface methods: private/default/static in PlayerService
+- Records: record/MatchRecord.java
+- Custom immutable type: model/Statistics.java (final fields, only getters)
+- Lambdas (Predicate): PlayerManager.filterPlayers()
+- final/effectively final: fields in Statistics are final; lambda closures by default are effectively final
+- Method references: Player::displayStats in PlayerManager.listPlayers()
+- Switch expressions & pattern matching: switch in Main.java (expression style)
+- Sealed classes and interfaces: model/Player is sealed
+
+Extra (Java 22/23)
+------------------
+- Project uses LVTI, switch expressions, sealed classes, records which are supported in modern JDKs (21+).
