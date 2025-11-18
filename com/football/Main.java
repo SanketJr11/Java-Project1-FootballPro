@@ -25,7 +25,8 @@ public class Main {
 
         boolean running = true;
         while (running) {
-            System.out.println("""                \n===== FOOTBALL MANAGER =====
+            System.out.println("""              
+            	===== FOOTBALL MANAGER =====
                 1. Add Player
                 2. List Players
                 3. Search Player
@@ -58,7 +59,7 @@ public class Main {
 
                         if (p != null) manager.addPlayer(p);
                     } catch (Exception e) {
-                        System.out.println("⚠️ Invalid input: " + e.getMessage());
+                        System.out.println("Invalid input: " + e.getMessage());
                     }
                 }
 
@@ -69,12 +70,12 @@ public class Main {
                     String name = scanner.nextLine();
                     manager.findPlayer(name)
                         .ifPresentOrElse(System.out::println,
-                            () -> System.out.println("❌ Player not found!"));
+                            () -> System.out.println("Player not found!"));
                 }
 
                 case "4" -> {
                     MatchRecord record = new MatchRecord("Real Madrid", 3, 1);
-                    System.out.println("🏟 Record Demo: " + record);
+                    System.out.println("Record Demo: " + record);
                 }
 
                 case "5" -> {
