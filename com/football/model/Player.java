@@ -13,7 +13,8 @@ import java.time.LocalDate;
  * - sealed classes
  */
 public sealed abstract class Player permits Striker, Goalkeeper {
-    // Encapsulation: private fields
+    
+	// Encapsulation: private fields
     private String name;
     private int age;
     private int score;
@@ -23,7 +24,11 @@ public sealed abstract class Player permits Striker, Goalkeeper {
     public Player() {
         this("Unknown", 18, 0); // Calls another constructor in same class
     }
-
+    
+    /**
+     * Parameterized constructor.
+     * Called by subclasses to set common player attributes.
+     */
     public Player(String name, int age, int score) {
         this.name = name;
         this.age = age;
@@ -31,16 +36,16 @@ public sealed abstract class Player permits Striker, Goalkeeper {
         this.joinDate = LocalDate.now();
     }
 
-    // Getters → encapsulation
+    // Getters → encapsulation (read-only access to private fields)
     public String getName() { return name; }
     public int getAge() { return age; }
     public int getScore() { return score; }
     public LocalDate getJoinDate() { return joinDate; }
 
-    // Abstract method → to be overridden by subclasses (polymorphism)
+    // Abstract method → to be overridden by subclasses i.e Striker and Goalkeeper (polymorphism)
     public abstract void displayStats();
 
-    @Override
+    @Override   //Gives a human-readable representation of the player object.
     public String toString() {
         return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate;
     }
