@@ -18,7 +18,7 @@ public interface PlayerService {
 
     // Default method (Java 8+)
     default void welcome() {
-        System.out.println("👋 Welcome to Football Manager!");
+        System.out.println("Welcome to Football Manager!");
     }
 
     // Static method
