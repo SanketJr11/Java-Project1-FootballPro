@@ -50,6 +50,6 @@ public sealed abstract class Player permits Striker, Goalkeeper , Defender {
 
     @Override   //Gives a human-readable representation of the player object.
     public String toString() {
-        return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate;
+        return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate + " PlayerType: " + type ;
     }
 }
