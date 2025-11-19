@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * - use of Date API (LocalDate)
  * - sealed classes
  */
-public sealed abstract class Player permits Striker, Goalkeeper {
+public sealed abstract class Player permits Striker, Goalkeeper , Defender {
     
 	// Encapsulation: private fields
     private String name;
