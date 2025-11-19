@@ -5,5 +5,5 @@ package com.football.model;
  * - enums
  */
 public enum PlayerType {
-    STRIKER, GOALKEEPER , DEFENDER
+    STRIKER, GOALKEEPER , DEFENDER, UNKNOWN
 }

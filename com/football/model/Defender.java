@@ -2,9 +2,9 @@ package com.football.model;
 
 public final class Defender extends Player {
 
-	//Parameterized constructor for Striker.
+	//Parameterized constructor for Defender.
     public Defender(String name, int age, int goals) {
-        super(name, age, goals); // super() → calling parent constructor i.e player
+        super(name, age, goals, PlayerType.DEFENDER); // super() → calling parent constructor i.e player
     }
 
     

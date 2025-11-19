@@ -10,7 +10,7 @@ public final class Striker extends Player {
 	
 	//Parameterized constructor for Striker.
     public Striker(String name, int age, int goals) {
-        super(name, age, goals); // super() → calling parent constructor i.e player
+        super(name, age, goals, PlayerType.STRIKER); // super() → calling parent constructor i.e player
     }
 
     

@@ -44,16 +44,29 @@ public class Main {
                     try {
                         System.out.print("Enter name: ");
                         String name = scanner.nextLine();
+                        
                         System.out.print("Enter age: ");
                         int age = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Enter type (STRIKER/GOALKEEPER): ");
-                        String type = scanner.nextLine();
-                        System.out.print("Enter score: ");
+                        
+                        System.out.print("Enter type (STRIKER/GOALKEEPER/DEFENDER): ");
+                        String type = scanner.nextLine().trim();
+                        
+                        if (type.toUpperCase().equals("GOALKEEPER")) {
+                        		System.out.print("Enter Saves: ");
+                        		
+	                        } else if (type.toUpperCase().equals("DEFENDER"))  {
+	                    	   System.out.print("Enter Tackels: ");
+	                    	   
+	                        } else {
+	                    	   System.out.print("Enter score: ");
+	                        }
+                    	   
                         int score = Integer.parseInt(scanner.nextLine());
 
                         Player p = switch (type.toUpperCase()) {
                             case "STRIKER" -> new Striker(name, age, score);
                             case "GOALKEEPER" -> new Goalkeeper(name, age, score);
+                            case "DEFENDER" -> new Defender(name, age, score);
                             default -> null;
                         };
 

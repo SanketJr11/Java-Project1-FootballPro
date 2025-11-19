@@ -5,9 +5,9 @@ package com.football.model;
  */
 public final class Goalkeeper extends Player {
 	
-	//Parameterized constructor for Striker.
+	//Parameterized constructor for GoalKeeper.
     public Goalkeeper(String name, int age, int saves) {
-        super(name, age, saves);  // super() → calling parent constructor i.e player
+        super(name, age, saves, PlayerType.GOALKEEPER);  // super() → calling parent constructor i.e player
     }
 
     
@@ -17,6 +17,6 @@ public final class Goalkeeper extends Player {
      */
     @Override
     public void displayStats() {
-        System.out.println(" Goalkeeper " + getName() + " made " + getScore() + " saves!");
+        System.out.println("Goalkeeper " + getName() + " made " + getScore() + " saves!");
     }
 }
