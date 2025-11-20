@@ -1,8 +1,10 @@
 package com.football.service;
 
 import com.football.model.*;
+import com.football.exception.PlayerNotFoundException;
 import java.util.*;
 import java.util.function.Predicate;
+
 
 /**
  * Demonstrates:
@@ -31,6 +33,16 @@ public class PlayerManager implements PlayerService {
     public Optional<Player> findPlayer(String name) {
         return players.stream().filter(p -> p.getName().equalsIgnoreCase(name)).findFirst();
     }
+    
+    @Override
+    public Player findOrThrow(String name) throws PlayerNotFoundException {
+        return players.stream()
+                .filter(p -> p.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() ->
+                        new PlayerNotFoundException("Player '" + name + "' not found.")
+                );
+    }
 
     @Override
     public List<Player> filterPlayers(Predicate<Player> condition) {
@@ -44,8 +56,14 @@ public class PlayerManager implements PlayerService {
     }
     
     @Override
-    public boolean deletePlayer(String name) {
-        return players.removeIf(p -> p.getName().equalsIgnoreCase(name));
+    public boolean deletePlayer(String name) throws PlayerNotFoundException {
+        boolean removed = players.removeIf(p -> p.getName().equalsIgnoreCase(name));
+
+        if (!removed) {
+            throw new PlayerNotFoundException("Player '" + name + "' not found.");
+        }
+
+        return true; // success
     }
     
     

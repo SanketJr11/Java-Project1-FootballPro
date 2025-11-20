@@ -3,6 +3,7 @@ package com.football;
 import com.football.model.*;
 import com.football.service.*;
 import com.football.record.*;
+import com.football.exception.PlayerNotFoundException;
 import com.football.util.*;
 import java.util.*;
 
@@ -89,14 +90,17 @@ public class Main {
                 case "2" -> manager.listPlayers();  // List all players (polymorphic displayStats())
 
                 case "3" -> {
-                	
-                	// Search for a player by name (uses Optional + lambdas)
-                    System.out.print("Enter player name: ");
+                	System.out.print("Enter player name: ");
                     String name = scanner.nextLine();
-                    
-                    manager.findPlayer(name)
-                        .ifPresentOrElse(System.out::println,     // method reference
-                            () -> System.out.println("Player not found!"));
+
+                    try {
+                        // Uses the new findOrThrow() from PlayerManager
+                        Player player = manager.findOrThrow(name);
+                        System.out.println(player);          // prints details + statistics
+                        
+                    } catch (PlayerNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 
                 case "4" -> {
@@ -139,12 +143,11 @@ public class Main {
                 	System.out.print("Enter player name to delete: ");
                     String delName = scanner.nextLine();
 
-                    boolean deleted = manager.deletePlayer(delName);
-
-                    if (deleted) {
+                    try {
+                        manager.deletePlayer(delName);
                         System.out.println("Player '" + delName + "' deleted successfully.");
-                    } else {
-                        System.out.println("Player not found.");
+                    } catch (PlayerNotFoundException e) {
+                        System.out.println(e.getMessage());
                     }
                }
 
