@@ -20,6 +20,7 @@ public sealed abstract class Player permits Striker, Goalkeeper , Defender {
     private int score;
     private PlayerType type; // enum field
     private LocalDate joinDate;
+    private Statistics statistics;   
 
     // Constructor chaining → contrast this() and this.
     public Player() {
@@ -44,12 +45,26 @@ public sealed abstract class Player permits Striker, Goalkeeper , Defender {
     public int getScore() { return score; }
     public PlayerType getType() { return type;}
     public LocalDate getJoinDate() { return joinDate; }
+    public Statistics  getStatistics() { return statistics;}
+    
 
     // Abstract method → to be overridden by subclasses i.e Striker and Goalkeeper (polymorphism)
     public abstract void displayStats();
+    
+    
+    public void setStatistics(int matches, int totalScore) {
+        this.statistics = new Statistics(matches, totalScore);
+    }
 
     @Override   //Gives a human-readable representation of the player object.
     public String toString() {
-        return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate + " PlayerType: " + type ;
+    	String statText = (statistics == null)
+                ? "No stats recorded"
+                : ("Matches: " + statistics.getMatches() +
+                   ", Total: " + statistics.getTotalGoals() +
+                   ", Avg: " + String.format("%.2f", statistics.average()));
+    	
+        return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate + " PlayerType: " + type + " | Stats: " + statText;
+    
     }
 }

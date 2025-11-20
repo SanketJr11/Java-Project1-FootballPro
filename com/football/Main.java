@@ -30,13 +30,14 @@ public class Main {
         // Main loop – shows menu until user chooses to exit
         while (running) {
             System.out.println("""              
-            	===== FOOTBALL MANAGER =====
+            ============== FOOTBALL MANAGER ===========
                 1. Add Player
                 2. List Players
                 3. Search Player
-                4. Record Demo
-                5. Average Demo (Varargs)
-                6. Exit
+                4. Add Player Statistics
+                5. Record Demo
+                6. Average Demo (Varargs)
+                7. Exit
             """);
 
             System.out.print("Choice: ");
@@ -96,20 +97,44 @@ public class Main {
                         .ifPresentOrElse(System.out::println,     // method reference
                             () -> System.out.println("Player not found!"));
                 }
-
+                
                 case "4" -> {
+                    System.out.print("Enter player name: ");
+                    String name = scanner.nextLine();
+
+                    var optional = manager.findPlayer(name);
+
+                    if(optional.isPresent()) {
+                        Player player = optional.get();
+
+                        System.out.print("Enter total matches: ");
+                        int matches = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Enter total score (" +
+                                player.getType() + " stats): ");
+                        int total = Integer.parseInt(scanner.nextLine());
+
+                        player.setStatistics(matches, total);
+
+                        System.out.println("Statistics updated!");
+                    } else {
+                        System.out.println("Player not found.");
+                    }
+                }
+
+                case "5" -> {
                 	 // Simple demo of Java record type
                     MatchRecord record = new MatchRecord("Real Madrid", 3, 1); 
                     System.out.println("Record Demo: " + record);
                 }
 
-                case "5" -> {
+                case "6" -> {
                 	 // Varargs + method overloading demo
                     double avg = FootballUtils.average(10, 20, 30);
                     System.out.println("Average (varargs demo): " + avg);
                 }
 
-                case "6" -> running = false;   // Exit the loop / program
+                case "7" -> running = false;   // Exit the loop / program
 
                 default -> System.out.println("Invalid option!");
             }
