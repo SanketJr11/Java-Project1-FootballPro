@@ -13,7 +13,7 @@ import java.util.function.Predicate;
  * - lambda expressions and method references
  */
 public class PlayerManager implements PlayerService {
-    private final List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();  // Internal storage of players
 
     @Override
     public void addPlayer(Player p) {
@@ -23,8 +23,8 @@ public class PlayerManager implements PlayerService {
     @Override
     public void listPlayers() {
         if (players.isEmpty()) System.out.println("No players found!");
-        // Method reference
-        players.forEach(Player::displayStats);
+        
+        players.forEach(Player::displayStats);   //Method reference
     }
 
     @Override
@@ -34,10 +34,11 @@ public class PlayerManager implements PlayerService {
 
     @Override
     public List<Player> filterPlayers(Predicate<Player> condition) {
+    	// Functional style filtering using Predicate
         return players.stream().filter(condition).toList(); // Lambda (Predicate)
     }
 
-    // Defensive Copying (returns a new copy)
+    // Defensive Copying (returns a new copy) , cannot modify the internal list directly.
     public List<Player> getPlayerCopy() {
         return new ArrayList<>(players);
     }

@@ -23,7 +23,7 @@ public sealed abstract class Player permits Striker, Goalkeeper , Defender {
 
     // Constructor chaining → contrast this() and this.
     public Player() {
-        this("Unknown", 18, 0, PlayerType.UNKNOWN); // Calls another constructor in same class
+        this("Unknown", 18, 0, PlayerType.UNKNOWN); // Calls another constructor in same class with default values
     }
     
     /**

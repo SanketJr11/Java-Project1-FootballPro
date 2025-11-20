@@ -3,8 +3,8 @@ package com.football.model;
 public final class Defender extends Player {
 
 	//Parameterized constructor for Defender.
-    public Defender(String name, int age, int goals) {
-        super(name, age, goals, PlayerType.DEFENDER); // super() → calling parent constructor i.e player
+    public Defender(String name, int age, int tackles) {
+        super(name, age, tackles, PlayerType.DEFENDER); // super() → calling parent constructor i.e player
     }
 
     
@@ -14,7 +14,7 @@ public final class Defender extends Player {
      */
     @Override
     public void displayStats() {
-        System.out.println("Defender " + getName() + " has " + getScore() + " tackels!");
+        System.out.println("Defender " + getName() + " has " + getScore() + " tackles!");
     }
 
 }
