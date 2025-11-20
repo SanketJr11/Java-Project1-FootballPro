@@ -37,7 +37,8 @@ public class Main {
                 4. Add Player Statistics
                 5. Record Demo
                 6. Average Demo (Varargs)
-                7. Exit
+                7. Delete player
+                8. Exit
             """);
 
             System.out.print("Choice: ");
@@ -133,8 +134,21 @@ public class Main {
                     double avg = FootballUtils.average(10, 20, 30);
                     System.out.println("Average (varargs demo): " + avg);
                 }
+                
+                case "7" -> {
+                	System.out.print("Enter player name to delete: ");
+                    String delName = scanner.nextLine();
 
-                case "7" -> running = false;   // Exit the loop / program
+                    boolean deleted = manager.deletePlayer(delName);
+
+                    if (deleted) {
+                        System.out.println("Player '" + delName + "' deleted successfully.");
+                    } else {
+                        System.out.println("Player not found.");
+                    }
+               }
+
+                case "8" -> running = false;   // Exit the loop / program
 
                 default -> System.out.println("Invalid option!");
             }

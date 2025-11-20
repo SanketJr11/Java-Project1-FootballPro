@@ -42,4 +42,11 @@ public class PlayerManager implements PlayerService {
     public List<Player> getPlayerCopy() {
         return new ArrayList<>(players);
     }
+    
+    @Override
+    public boolean deletePlayer(String name) {
+        return players.removeIf(p -> p.getName().equalsIgnoreCase(name));
+    }
+    
+    
 }

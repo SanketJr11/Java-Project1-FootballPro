@@ -17,6 +17,8 @@ public interface PlayerService {
     void listPlayers();
     Optional<Player> findPlayer(String name);
     List<Player> filterPlayers(java.util.function.Predicate<Player> condition); // Lambda support
+    
+    boolean deletePlayer(String name);  // to delete a player
 
     
     
