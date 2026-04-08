@@ -64,7 +64,7 @@ public class Main {
                         		System.out.print("Enter Saves: ");
                         		
 	                        } else if (type.toUpperCase().equals("DEFENDER"))  {
-	                    	   System.out.print("Enter Tackels: ");
+	                    	   System.out.print("Enter Tackles: ");
 	                    	   
 	                        } else {
 	                    	   System.out.print("Enter score: ");
@@ -151,7 +151,10 @@ public class Main {
                     }
                }
 
-                case "8" -> running = false;   // Exit the loop / program
+                case "8" -> {
+                	System.out.println("Thank you for using Football Management app");
+                	running = false;   // Exit the loop / program
+                }
 
                 default -> System.out.println("Invalid option!");
             }

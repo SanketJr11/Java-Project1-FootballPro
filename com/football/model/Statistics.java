@@ -9,7 +9,7 @@ public final class Statistics {
     private final int matches;
     private final int totalGoals;
 
-    public Statistics(int matches, int totalGoals) {
+    public Statistics(int matches, int totalGoals) {  //statistics --> changed to analytics
         this.matches = matches;
         this.totalGoals = totalGoals;
     }
