@@ -1,21 +1,19 @@
 package com.football.model;
 
+import java.time.LocalDate;
+
 public final class Defender extends Player {
 
-	//Parameterized constructor for Defender.
     public Defender(String name, int age, int tackles) {
-        super(name, age, tackles, PlayerType.DEFENDER); // super() → calling parent constructor i.e player
+        super(name, age, tackles, PlayerType.DEFENDER);
     }
 
-    
-    /**
-     * Implementation of abstract method from Player.
-     * Demonstrates polymorphism → each subclass has its own output.
-     */
+    public Defender(String name, int age, int tackles, LocalDate joinDate) {
+        super(name, age, tackles, PlayerType.DEFENDER, joinDate);
+    }
+
     @Override
     public void displayStats() {
-        System.out.println("Defender " + getName() + " has " + getScore() + " tackles!");
+        System.out.println("Defender " + getName() + " made " + getScore() + " tackles.");
     }
-
 }
- 

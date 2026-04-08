@@ -2,69 +2,71 @@ package com.football.model;
 
 import java.time.LocalDate;
 
-/**
- * Demonstrates:
- * - classes
- * - encapsulation
- * - contrast this() and this.
- * - inheritance (will be extended)
- * - overriding (abstract displayStats())
- * - use of Date API (LocalDate)
- * - sealed classes
- */
-public sealed abstract class Player permits Striker, Goalkeeper , Defender {
-    
-	// Encapsulation: private fields
-    private String name;
-    private int age;
-    private int score;
-    private PlayerType type; // enum field
-    private LocalDate joinDate;
-    private Statistics statistics;   
+public sealed abstract class Player permits Striker, Goalkeeper, Defender {
 
-    // Constructor chaining → contrast this() and this.
+    private final String name;
+    private final int age;
+    private final int score;
+    private final PlayerType type;
+    private final LocalDate joinDate;
+    private Statistics statistics;
+
     public Player() {
-        this("Unknown", 18, 0, PlayerType.UNKNOWN); // Calls another constructor in same class with default values
+        this("Unknown", 18, 0, PlayerType.UNKNOWN, LocalDate.now());
     }
-    
-    /**
-     * Parameterized constructor.
-     * Called by subclasses to set common player attributes.
-     */
+
     public Player(String name, int age, int score, PlayerType type) {
+        this(name, age, score, type, LocalDate.now());
+    }
+
+    public Player(String name, int age, int score, PlayerType type, LocalDate joinDate) {
         this.name = name;
         this.age = age;
         this.score = score;
         this.type = type;
-        this.joinDate = LocalDate.now();
+        this.joinDate = joinDate;
     }
 
-    // Getters → encapsulation (read-only access to private fields)
-    public String getName() { return name; }
-    public int getAge() { return age; }
-    public int getScore() { return score; }
-    public PlayerType getType() { return type;}
-    public LocalDate getJoinDate() { return joinDate; }
-    public Statistics  getStatistics() { return statistics;}
-    
+    public String getName() {
+        return name;
+    }
 
-    // Abstract method → to be overridden by subclasses i.e Striker and Goalkeeper (polymorphism)
+    public int getAge() {
+        return age;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public PlayerType getType() {
+        return type;
+    }
+
+    public LocalDate getJoinDate() {
+        return joinDate;
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(int matches, int total) {
+        this.statistics = new Statistics(matches, total);
+    }
+
     public abstract void displayStats();
-    
-    
-    public void setStatistics(int matches, int totalScore) {
-        this.statistics = new Statistics(matches, totalScore);
-    }
 
-    @Override   //Gives a human-readable representation of the player object.
+    @Override
     public String toString() {
-    	String statText = (statistics == null)
-                ? "No stats recorded"
-                : ("Matches: " + statistics.getMatches() +
-                   ", Total: " + statistics.getTotalGoals() +
-                   ", Avg: " + String.format("%.2f", statistics.average()));
-    	
-        return name + " (" + age + ") - Score: " + score + " Joined: " + joinDate + " PlayerType: " + type + " | Stats: " + statText;
-    
+        String statText = (statistics == null)
+                ? "No stats"
+                : "Matches=" + statistics.getMatches()
+                + ", Total=" + statistics.getTotalValue()
+                + ", Avg=" + String.format("%.2f", statistics.average());
+
+        return name + " | Age=" + age + " | Score=" + score
+                + " | Type=" + type + " | Joined=" + joinDate
+                + " | " + statText;
     }
 }

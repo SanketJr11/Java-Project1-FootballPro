@@ -1,3 +1,53 @@
+# Java / Maven
 *.class
+*.log
+*.jar
+*.war
+*.ear
+
+# Build outputs
+target/
+build/
+out/
+
+# Maven wrapper internals
+.mvn/
+!mvnw
+!mvnw.cmd
+
+# Spring / runtime
+*.pid
+*.seed
+*.tmp
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.springBeans
+.vscode/
+nbproject/
+dist/
+nbbuild/
+
+# OS files
 .DS_Store
-.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and caches
+logs/
+.vite/
+
+# Node
+node_modules/
+
+# Env files
+.env
+.env.*
+!.env.example
+ui/.env

@@ -1,22 +1,19 @@
 package com.football.model;
 
-/**
- * Another subclass demonstrating inheritance and polymorphism.
- */
+import java.time.LocalDate;
+
 public final class Goalkeeper extends Player {
-	
-	//Parameterized constructor for GoalKeeper.
+
     public Goalkeeper(String name, int age, int saves) {
-        super(name, age, saves, PlayerType.GOALKEEPER);  // super() → calling parent constructor i.e player
+        super(name, age, saves, PlayerType.GOALKEEPER);
     }
 
-    
-    /**
-     * Implementation of abstract method from Player.
-     * Demonstrates polymorphism → each subclass has its own output.
-     */
+    public Goalkeeper(String name, int age, int saves, LocalDate joinDate) {
+        super(name, age, saves, PlayerType.GOALKEEPER, joinDate);
+    }
+
     @Override
     public void displayStats() {
-        System.out.println("Goalkeeper " + getName() + " made " + getScore() + " saves!");
+        System.out.println("Goalkeeper " + getName() + " made " + getScore() + " saves.");
     }
 }

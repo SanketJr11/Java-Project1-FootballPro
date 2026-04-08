@@ -1,28 +1,23 @@
 package com.football.model;
 
-/**
- * Demonstrates:
- * - custom immutable type
- * - encapsulation
- */
 public final class Statistics {
     private final int matches;
-    private final int totalGoals;
+    private final int totalValue;
 
-    public Statistics(int matches, int totalGoals) {  //statistics --> changed to analytics
+    public Statistics(int matches, int totalValue) {
         this.matches = matches;
-        this.totalGoals = totalGoals;
+        this.totalValue = totalValue;
     }
-    
-    //getters
-    public int getMatches() { return matches; }
-    public int getTotalGoals() { return totalGoals; }
-    
-    
-    /**
-     * Returns average goals per match.
-     */
+
+    public int getMatches() {
+        return matches;
+    }
+
+    public int getTotalValue() {
+        return totalValue;
+    }
+
     public double average() {
-        return matches == 0 ? 0 : (double) totalGoals / matches;
+        return matches == 0 ? 0 : (double) totalValue / matches;
     }
 }

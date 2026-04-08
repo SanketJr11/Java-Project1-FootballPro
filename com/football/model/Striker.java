@@ -1,25 +1,19 @@
 package com.football.model;
 
-/**
- * Demonstrates:
- * - inheritance
- * - super() call
- * - overriding and polymorphism
- */
+import java.time.LocalDate;
+
 public final class Striker extends Player {
-	
-	//Parameterized constructor for Striker.
+
     public Striker(String name, int age, int goals) {
-        super(name, age, goals, PlayerType.STRIKER); // super() → calling parent constructor i.e player
+        super(name, age, goals, PlayerType.STRIKER);
     }
 
-    
-    /**
-     * Implementation of abstract method from Player.
-     * Demonstrates polymorphism → each subclass has its own output.
-     */
+    public Striker(String name, int age, int goals, LocalDate joinDate) {
+        super(name, age, goals, PlayerType.STRIKER, joinDate);
+    }
+
     @Override
     public void displayStats() {
-        System.out.println("Striker " + getName() + " scored " + getScore() + " goals!");
+        System.out.println("Striker " + getName() + " scored " + getScore() + " goals.");
     }
 }
