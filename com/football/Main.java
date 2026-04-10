@@ -207,13 +207,13 @@ public class Main {
     }
 
     private static void collectOperationsDemo(PlayerManager manager) {
-        System.out.println("\n--- toMap() Demo ---");
+        System.out.println("\n--- toMap() Score ---");
         System.out.println(manager.getPlayerScoreMap());
 
-        System.out.println("\n--- groupingBy() Demo ---");
+        System.out.println("\n--- groupingBy() Type ---");
         System.out.println(manager.groupPlayersByType());
 
-        System.out.println("\n--- partitioningBy() Demo ---");
+        System.out.println("\n--- partitioningBy() Adult ---");
         System.out.println(manager.partitionPlayersByAdult(30));
     }
 
@@ -221,7 +221,7 @@ public class Main {
         System.out.println("\n--- Functional Interfaces Demo ---");
 
         Consumer<Player> printPlayer = p -> System.out.println("Consumer -> " + p.getName());
-        Predicate<Player> adultPlayer = p -> p.getAge() >= 18;
+        Predicate<Player> adultPlayer = p -> p.getAge() >= 37;
         Function<Player, String> labelFunction = p -> p.getName() + " | " + p.getType();
         Supplier<Player> defaultPlayer = () -> new Striker("Default Striker", 20, 0);
 
